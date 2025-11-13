@@ -1,197 +1,597 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Serabi Bu Murtinem</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="/asset/logo-serabi.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serabi Pasar Turi Bu Murtinem - Sejak 1990</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <style>
+        /* ================================
+           CSS Global & Skema Warna
+           ================================ */
+        :root {
+            --color-background: #FFFFFF;
+            /* Putih bersih */
+            --color-text: #3a3a3a;
+            /* Abu-abu gelap (untuk teks) */
+            --color-primary: #285a43;
+            /* Hijau tua (dari daun pisang) */
+            --color-secondary: #A0522D;
+            /* Cokelat (dari serabi) */
+            --color-light-gray: #F8F8F8;
+            /* Latar belakang alternatif */
+
+            --font-heading: 'Montserrat', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* ================================
+           Tombol (CTA & WhatsApp)
+           ================================ */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(40, 90, 67, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #1e4231;
+            box-shadow: 0 6px 20px rgba(40, 90, 67, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1FAF54;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ================================
+           Navigasi (Header)
+           ================================ */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: var(--color-background);
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* ================================
+           Seksi Hero
+           ================================ */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2rem;
+            min-height: 80vh;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ================================
+           Seksi Menu
+           ================================ */
+        #menu {
+            background-color: var(--color-light-gray);
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .menu-item {
+            background: var(--color-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .menu-content {
+            padding: 1.5rem 2rem;
+        }
+
+        .menu-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-content p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ================================
+           Seksi Testimoni
+           ================================ */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--color-primary);
+        }
+
+        .testimonial-card p.quote {
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p.author {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        /* ================================
+           Seksi Kontak
+           ================================ */
+        #kontak {
+            background-color: var(--color-light-gray);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-body);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* ================================
+           Footer
+           ================================ */
+        footer {
+            background: var(--color-primary);
+            color: white;
+            padding: 4rem 0 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            padding-bottom: 2rem;
+        }
+
+        .footer-content h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content p {
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+            font-weight: 300;
+        }
+
+        .social-links {
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            /* Ukuran ikon */
+            margin: 0 0.75rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #3a6d5a;
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* ================================
+           Responsif (Wajib)
+           ================================ */
+        @media (max-width: 992px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                grid-row: 1;
+                /* Pindahkan gambar ke atas di mobile */
+                margin-bottom: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Sembunyikan nav-links di mobile (butuh JS untuk hamburger) */
+            /* Untuk saat ini, kita biarkan saja agar tetap simpel */
+            .nav-links {
+                display: none;
+                /* Sembunyikan di mobile */
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 2rem;
+                /* Kurangi padding di hero */
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-text p {
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Coming Soon -->
-    <div class="min-h-screen bg-gray-900 flex flex-col items-center justify-center">
-        <h1 class="text-5xl text-white font-bold mb-8 animate-pulse">
-            Coming Soon
-        </h1>
-        <p class="text-white text-lg mb-8">
-            Toko Serabi Bu Murtinem sebentar lagi akan dibuka, Stay Tune!
-        </p>
-    </div>
-    <!-- End of Coming Soon -->
-    <!--
+
+    <header>
+        <nav class="navbar container">
+            <a href="#" class="logo">Serabi Bu Murtinem</a>
+
+            <ul class="nav-links">
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-        <header>
-            <nav class="bg-[#DEDEDE] shadow-xl max-w-full mx-auto py-4 px-10 md:py-10 md:px-20">
-                <div class="text-[#444853] justify-between items-center hidden md:flex">
-                    <h1 class="text-4xl font-bold">Portfolio</h1>
-                    <ul class="flex space-x-14 text-base">
-                        <li><a href="#" class="font-bold hover:text-[#FF0066]">Home</a></li>
-                        <li><a href="#education" class="font-bold hover:text-[#FF0066]">Education</a></li>
-                        <li><a href="#portfolio" class="font-bold hover:text-[#FF0066]">Portfolio</a></li>
-                        <li><a href="#contact" class="font-bold hover:text-[#FF0066]">Contact</a></li>
-                    </ul>
-                    <button
-                        class="bg-[#FF0066] py-3 px-7 rounded-[50px] font-bold text-base text-white hover:scale-105 transition-all duration-300">
-                        <a target="_blank" href="https://www.instagram.com/arifsetia_one/?hl=id">Follow Me!</a>
-                    </button>
-                </div>
-                <div class="flex justify-between md:hidden">
-                    <h1 class="text-[#444853] text-2xl font-bold">Portofolio</h1>
-                    <img class="w-6 hover:scale-125 transition-all duration-300"
-                        src="https://img.icons8.com/external-others-bomsymbols-/91/000000/external-hamberger-flat-general-office-others-bomsymbols-.png" />
-                </div>
-            </nav>
-        </header>
-       
-        <section class="bg-[#F0F0F0] grid gird-cols-2 justify-center md:py-[7%] md:grid-cols-2">
-            <div class="m-[20%] mt-32">
-                <h3 class="text-semibold font-bold md:text-2xl text-xl text-[#444853]">Hello ----</h3><br />
-                <h1 class="font-bold md:text-6xl text-4xl text-[#444853]">I'm<span
-                        class="text-bold md:text-6xl text-4xl text-[#FF0066]">
-                        Arif</span> Setiawan</h1><br>
-                <p class="font-semibold text-slate-600">I am a student from Amikom University Yogyakarta, Informatics
-                    Engineering Study Program | Class of 2020.
+        <section class="hero container">
+            <div class="hero-text">
+                <h1>Kelezatan Serabi Tradisional, Sehangat Pagi di Jogja.</h1>
+                <p class="subtitle">Dibuat dengan resep warisan, sejak 1990.</p>
+                <p>
+                    Rasakan gurihnya santan dan lembutnya adonan tepung beras, dimasak langsung di atas arang
+                    dengan penuh cinta.
                 </p>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20untuk%20memesan%20Serabi%20Bu%20Murtinem."
+                    class="btn btn-primary" target="_blank">
+                    <i class="ph-whatsapp-logo" style="vertical-align: middle; font-size: 1.2rem;"></i>
+                    Pesan via WhatsApp
+                </a>
             </div>
-            <div class="mt-30">
-                <img src="asset/arif.png" alt="arif setiawan" class="max-w-full mx-auto pl-10 pr-10" />
-            </div>
-        </section>
-
-      
-        <section class="w-full">
-            <div class="flex flex-col items-center ml-[10%] mr-[10%] mt-[3%] mb-[6%]">
-               
-                <h1 class="font-bold md:text-3xl text-2xl text-[#2F333F]" id="education">Education</h1>
-                <div class="grid grid-cols-1 gap-2 justify-center p-4 md:grid-cols-3 md:gap-6">
-                    <div>
-                        <h2 class="font-bold text-[#444853]">SMP N 1 BAMBANGLIPURO</h2>
-                        <p class="text-base">(Tahun 2013 - 2016)</p>
-                    </div>
-                    <div>
-                        <h2 class="font-bold text-[#444853]">SMK N 1 BANTUL</h2>
-                        <p class="text-base">(Tahun 2016 - 2019)</p>
-                    </div>
-                    <div>
-                        <h2 class="font-bold text-[#444853]">UNIVERSITAS AMIKOM YOGYAKARTA</h2>
-                        <p class="text-base">(Tahun 2020 - Sekarang)</p>
-                    </div>
-                </div>
+            <div class="hero-image">
+                <img src="/asset/hero.png" alt="Serabi Bu Murtinem disajikan di atas daun pisang">
             </div>
         </section>
 
-    
-        <section class="bg-[#F0F0F0]">
-            <div class="flex flex-col items-center p-12">
-                <h1 class="font-bold md:text-3xl text-2xl text-[#2F333F]" id="portfolio">View My Portfolio</h1>
-                <p class="font-semibold text-slate-600">Take a look at some of my dummy portfolios.</p>
-            </div>
-            <div class="grid grid-cols-1 gap-2 justify-center pl-[10%] pr-[10%] pb-[10%] pt-0 md:grid-cols-3 md:gap-6">
-                <div
-                    class="max-w-full rounded overflow-hidden shadow-lg bg-white mt-4 justify-end hover:scale-105 transition-all duration-300">
-                    <img class="w-full"
-                        src="https://vocasia.id/blog/wp-content/uploads/2021/12/website-layout-design.jpg"
-                        alt="Sunset in the mountains">
-                    <div class="px-6 py-4">
-                        <h2 class="font-bold text-xl mb-2 text-gray-600">Website Design</h2>
-                        <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Consectetur vitae mollitia cumque! Iure fuga alias hic.</p>
+        <section id="menu">
+            <div class="container">
+                <h2>Menu Andalan Kami</h2>
+                <div class="menu-container">
+
+                    <div class="menu-item">
+                        <img src="/asset/serabi_original.png" alt="Serabi Original">
+                        <div class="menu-content">
+                            <h3>Serabi Original</h3>
+                            <p>
+                                Rasa klasik yang tak pernah salah. Perpaduan sempurna antara rasa manis dan gurih
+                                dari santan kental murni. Cocok untuk Anda yang mencintai cita rasa otentik.
+                            </p>
+                            <a href="#kontak" class="btn btn-primary">Pesan Sekarang</a>
+                        </div>
                     </div>
-                </div>
-                <div
-                    class="max-w-full rounded overflow-hidden shadow-lg bg-white mt-4 justify-end hover:scale-105 transition-all duration-300">
-                    <img class="w-full"
-                        src="https://vocasia.id/blog/wp-content/uploads/2021/12/website-layout-design.jpg"
-                        alt="Sunset in the mountains">
-                    <div class="px-6 py-4">
-                        <h2 class="font-bold text-xl mb-2 text-gray-600">Website Design</h2>
-                        <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Consectetur vitae mollitia cumque! Iure fuga alias hic.</p>
+
+                    <div class="menu-item">
+                        <img src="/asset/serabi_gurih.png" alt="Serabi Gurih">
+                        <div class="menu-content">
+                            <h3>Serabi Gurih</h3>
+                            <p>
+                                Varian spesial dengan taburan gurih di atasnya. Pilihan tepat untuk
+                                memulai hari Anda dengan sesuatu yang lezat dan mengenyangkan.
+                                (Contoh: Oncom, Keju, dll)
+                            </p>
+                            <a href="#kontak" class="btn btn-primary">Pesan Sekarang</a>
+                        </div>
                     </div>
-                </div>
-                <div
-                    class="max-w-full rounded overflow-hidden shadow-lg bg-white mt-4 justify-end hover:scale-105 transition-all duration-300">
-                    <img class="w-full"
-                        src="https://vocasia.id/blog/wp-content/uploads/2021/12/website-layout-design.jpg"
-                        alt="Sunset in the mountains">
-                    <div class="px-6 py-4">
-                        <h2 class="font-bold text-xl mb-2 text-gray-600">Website Design</h2>
-                        <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Consectetur vitae mollitia cumque! Iure fuga alias hic.</p>
-                    </div>
-                </div>
-                <div
-                    class="max-w-full rounded overflow-hidden shadow-lg bg-white mt-4 justify-end hover:scale-105 transition-all duration-300">
-                    <img class="w-full"
-                        src="https://vocasia.id/blog/wp-content/uploads/2021/12/website-layout-design.jpg"
-                        alt="Sunset in the mountains">
-                    <div class="px-6 py-4">
-                        <h2 class="font-bold text-xl mb-2 text-gray-600">Website Design</h2>
-                        <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Consectetur vitae mollitia cumque! Iure fuga alias hic.</p>
-                    </div>
-                </div>
-                <div
-                    class="max-w-full rounded overflow-hidden shadow-lg bg-white mt-4 justify-end hover:scale-105 transition-all duration-300">
-                    <img class="w-full"
-                        src="https://vocasia.id/blog/wp-content/uploads/2021/12/website-layout-design.jpg"
-                        alt="Sunset in the mountains">
-                    <div class="px-6 py-4">
-                        <h2 class="font-bold text-xl mb-2 text-gray-600">Website Design</h2>
-                        <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Consectetur vitae mollitia cumque! Iure fuga alias hic.</p>
-                    </div>
-                </div>
-                <div
-                    class="max-w-full rounded overflow-hidden shadow-lg bg-white mt-4 justify-end hover:scale-105 transition-all duration-300">
-                    <img class="w-full"
-                        src="https://vocasia.id/blog/wp-content/uploads/2021/12/website-layout-design.jpg"
-                        alt="Sunset in the mountains">
-                    <div class="px-6 py-4">
-                        <h2 class="font-bold text-xl mb-2 text-gray-600">Website Design</h2>
-                        <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Consectetur vitae mollitia cumque! Iure fuga alias hic.</p>
-                    </div>
+
                 </div>
             </div>
         </section>
 
-      
-        <section class="bg-white text-white max-w-full py-28">
-            <div class="flex flex-col items-center justify-center">
-                <h2 class="font-bold md:text-3xl text-2xl text-[#444853]" id="contact">Contact Me</h2>
-                <p class="font-semibold text-slate-600 mb-4">Please contact me if you want to ask.</p>
-                <form class="space-y-1">
-                    <div>
-                        <input class="bg-[#DEDEDE] w-[100%] md:w-[600px] p-3 text-slate-700" type="text" id="name"
-                            name="name" placeholder="Masukkan Nama" />
+        <section id="testimoni" class="container">
+            <h2>Kata Pelanggan</h2>
+            <div class="testimonial-grid">
+
+                <div class="testimonial-card">
+                    <p class="quote">"Serabinya ngangenin! Rasanya masih sama seperti waktu saya kecil dulu.
+                        Serabi originalnya juara, gurih santannya pas banget."</p>
+                    <p class="author">- Rina, Pelanggan Setia</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="quote">"Tempatnya bersih, pelayanannya ramah. Paling suka serabi gurihnya,
+                        baru diangkat dari tungku, masih hangat. Mantap!"</p>
+                    <p class="author">- Budi, Mahasiswa</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="quote">"Setiap ke Bantul pasti mampir. Ini serabi terenak yang pernah saya coba.
+                        Wajib beli buat oleh-oleh keluarga di rumah."</p>
+                    <p class="author">- Andika, Wisatawan</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="kontak">
+            <div class="container">
+                <h2>Hubungi Kami</h2>
+                <form class="contact-form" id="contact-form">
+                    <p style="text-align: center; margin-bottom: 2rem;">
+                        Ada pertanyaan, kritik, atau saran? Jangan ragu untuk menyampaikannya kepada kami.
+                    </p>
+                    <div class="form-group">
+                        <label for="name">Nama Anda</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-                    <div>
-                        <input class="bg-[#DEDEDE] w-[100%] md:w-[600px] p-3 text-slate-700" type="txt" id="email"
-                            name="email" placeholder="Masukkan Email" />
+                    <div class="form-group">
+                        <label for="email">Email Anda</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-                    <div>
-                        <textarea class="bg-[#DEDEDE] w-[100%] md:w-[600px] p-3 text-slate-700" id="message"
-                            placeholder="Message"></textarea>
+                    <div class="form-group">
+                        <label for="message">Pesan Anda</label>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
-                    <div class="text-center">
-                        <button
-                            class="bg-slate-600 py-3 px-7 font-bold hover:text-white hover:bg-slate-700 rounded-[50px]"
-                            type="submit">Submit</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary"
+                        style="width: 100%; border: none; cursor: pointer;">Kirim Pesan</button>
                 </form>
             </div>
         </section>
-
-   
-        <footer
-            class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-10 py-3 md:px-28 md:py-10 text-white max-w-full">
-            <div class="flex justify-center items-center"> Copyright &copy; 2022 by Arif Setiawan-FE2897318 </div>
-        </footer>
     </main>
--->
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Serabi Pasar Turi Bu Murtinem</h3>
+                <p>
+                    📍 Jl. Ps. Turi, Ponggok, Sidomulyo, Kec. Bambanglipuro,
+                    Kabupaten Bantul, Daerah Istimewa Yogyakarta 55764
+                </p>
+                <div class="social-links">
+                    <a href="https://instagram.com/NAMA_AKUN_ANDA" target="_blank" title="Instagram">
+                        <i class="ph-instagram-logo"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> Serabi Pasar Turi Bu Murtinem. Dibuat dengan ❤
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script untuk menampilkan tahun di footer secara dinamis
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Script untuk menangani pengiriman form (simulasi)
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Mencegah form terkirim
+
+            // Ambil data form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Tampilkan alert (simulasi)
+            alert('Terima kasih, ' + name + '! Pesan Anda telah kami terima.');
+
+            // Kosongkan form
+            this.reset();
+
+            // CATATAN PENTING:
+            // Ini hanya simulasi. Agar form ini benar-benar mengirim email,
+            // Anda perlu layanan backend seperti Formspree, Netlify Forms,
+            // atau skrip PHP/Node.js di server Anda.
+        });
+    </script>
 
 </body>
 
